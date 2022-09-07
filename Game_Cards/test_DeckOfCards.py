@@ -1,6 +1,5 @@
 from DeckOfCards import DeckOfCards
-from Card import Card
-import random
+from Card import  Card
 from unittest import TestCase,mock
 
 
