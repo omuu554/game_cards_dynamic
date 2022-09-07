@@ -1,9 +1,10 @@
 
 
 class Card:
+    "A card object"
 
     def __init__(self,value:int, suit:int):
-        "creates a card with a symbol and a suit it also holds what kind of value a card is"
+        "creates a card with a symbol and a suit it also holds what kind of value a card is at instantiation"
         self.__RaiseErrorNotDigit(value, suit) #raises exeption if value or suit are not int digits
         self.__RaiseErrorBadValue(value)# raises execption if value is invalid
         self.__RaiseErrorBadSuit(suit) # raises execption if suit is invalid
@@ -13,28 +14,28 @@ class Card:
         self.__StringSuits = {'1': 'Diamonds','2':'Spades', '3':'Hearts', '4': 'Clubs'} # dictionary with to convert suit to string
 
     def __RaiseErrorNotDigit(self, *Numbers):
-        "raises exeption if the values entered are not digits from the type int"
+        "function raises exeption if the values entered are not digits from the type int"
         for Num in Numbers:
             if (not str(Num).isdigit() or type(Num) != int):
                 raise TypeError("Card can only get integer numbers")
 
     def __RaiseErrorBadValue(self, value):
-        "raises exeption if the value entered is smaller than 1 or is bigger than 13"
+        "function raises exeption if the value entered is smaller than 1 or is bigger than 13"
         if(value < 1 or value > 13):
             raise TypeError("value cannot be smaller than 1 or bigger than 13")
 
     def __RaiseErrorBadSuit(self, value):
-        "raises exeption if the suit entered is smaller than 1 or is bigger than 5"
+        "function raises exeption if the suit entered is smaller than 1 or is bigger than 5"
         if(value < 1 or value > 5):
             raise TypeError("value cannot be smaller than 1 or bigger than 5")
 
     def __eq__(self, other):
-        "checks if the card equals to other card"
+        "function checks if the card equals to other card"
         return self.Value == other.Value and self.Suit == other.Suit
 
 
     def __gt__(self, other):
-        "checks if the card is greater than the other card"
+        "function checks if the card is greater than the other card"
         if(self.Value == other.Value):
             return self.Suit > other.Suit
 
@@ -47,7 +48,7 @@ class Card:
         return self.Value > other.Value
 
     def __str__(self):
-       "return aa string value of the current card"
+       "function returns a string value of the current card"
        return f"{self.__StringValues[str(self.Value)]} of {self.__StringSuits[str(self.Suit)]}"
 
 
