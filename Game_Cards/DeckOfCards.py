@@ -22,8 +22,10 @@ class DeckOfCards:
        return CardList
 
     def Deal_One(self):
+       if(self.DeckCards):
         Card = random.choice(self.DeckCards)
         self.DeckCards.remove(Card)
         return Card
+       return None
 
 

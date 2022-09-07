@@ -55,6 +55,7 @@ class TestDeckOfCards(TestCase):
             self.Deck1.Deal_One()
 
         self.assertFalse(self.Deck1.DeckCards)
+        self.assertIsNone(self.Deck1.Deal_One())
 
 
 
