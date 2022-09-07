@@ -68,6 +68,13 @@ class TestPlayer(TestCase):
         self.assertEqual(player2.PlayerName, 'GuestPlayer')
         self.assertEqual(player2.DeckSize, 26)
 
+    def test_Player_IsPlayerDeckNotEmpty_valid(self):
+        self.player.Set_Hand(self.Deck)
+        self.assertTrue(self.player.IsPlayerDeckNotEmpty())
+
+    def test_Player_IsPlayerDeckNotEmpty_valid(self):
+        self.assertFalse(self.player.IsPlayerDeckNotEmpty())
+
     def test_Player_Set_Hand_valid(self):
         self.player.Set_Hand( self.Deck)
         self.assertEqual(len(self.player.PlayerCards), 10)

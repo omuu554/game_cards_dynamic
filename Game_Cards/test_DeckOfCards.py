@@ -20,6 +20,13 @@ class TestDeckOfCards(TestCase):
 
         self.assertFalse(self.Deck1.DeckCards)
 
+    def test_DeckOfCards_IsDeckNotEmpty_valid(self):
+        self.assertTrue(self.Deck1.IsDeckNotEmpty())
+
+    def test_DeckOfCards_IsDeckNotEmpty_invalid(self):
+        self.Deck1.DeckCards = []
+        self.assertFalse(self.Deck1.IsDeckNotEmpty())
+
 
 
     def test_DeckOfCards_init_valid(self):

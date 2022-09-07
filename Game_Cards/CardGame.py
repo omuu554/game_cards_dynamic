@@ -17,12 +17,19 @@ class CardGame:
         self.Player1.Set_Hand(self.DeckOfCards)
         self.Player2.Set_Hand(self.DeckOfCards)
 
+    def GameStatus(self):
+        "function returns 1 if player1 has got the most cards 2 if player2 has got the most cards"
+        if (len(self.Player1.PlayerCards) > len(self.Player2.PlayerCards)):
+            return 1
+        if (len(self.Player1.PlayerCards) < len(self.Player2.PlayerCards)):
+            return 2
+
     def Get_Winner(self):
         "function returns the game winner if its a tie returns None"
-        if(len(self.Player1.PlayerCards) > len(self.Player2.PlayerCards)):
+        if(self.GameStatus() == 1):
             return self.Player1
-        if(len(self.Player1.PlayerCards) < len(self.Player2.PlayerCards)):
+        if(self.GameStatus() == 2):
             return self.Player2
-
         return None
+
 

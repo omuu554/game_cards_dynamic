@@ -8,6 +8,7 @@ class Card:
         self.__RaiseErrorNotDigit(value, suit) #raises exeption if value or suit are not int digits
         self.__RaiseErrorBadValue(value)# raises execption if value is invalid
         self.__RaiseErrorBadSuit(suit) # raises execption if suit is invalid
+
         self.Value = value
         self.Suit = suit
         self.__StringValues = {'1': 'Ace', '2':'2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9', '10': '10', '11': 'Prince', '12': 'Queen', '13': 'King'}# dictionary with to convert value to string
