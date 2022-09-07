@@ -10,6 +10,9 @@ class DeckOfCards:
     def CardShuffle(self):
        random.shuffle(self.DeckCards)
 
+    def IsDeckNotEmpty(self):
+        return self.DeckCards
+
 
     def CreateDeck(self):
        CardList = []
@@ -22,7 +25,7 @@ class DeckOfCards:
        return CardList
 
     def Deal_One(self):
-       if(self.DeckCards):
+       if(self.IsDeckNotEmpty()):
         Card = random.choice(self.DeckCards)
         self.DeckCards.remove(Card)
         return Card

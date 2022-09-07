@@ -40,12 +40,15 @@ class TestDeckOfCards(TestCase):
         card1 = self.Deck1.Deal_One()
         self.assertNotIn(card1,self.Deck1.DeckCards)
         self.assertEqual(len(self.Deck1.DeckCards),51)
+
         card2 = self.Deck1.Deal_One()
         self.assertNotIn(card2, self.Deck1.DeckCards)
         self.assertEqual(len(self.Deck1.DeckCards), 50)
+
         card3 = self.Deck1.Deal_One()
         self.assertNotIn(card3, self.Deck1.DeckCards)
         self.assertEqual(len(self.Deck1.DeckCards), 49)
+
         card4 = self.Deck1.Deal_One()
         self.assertNotIn(card4, self.Deck1.DeckCards)
         self.assertEqual(len(self.Deck1.DeckCards), 48)

@@ -4,10 +4,10 @@ import random
 class Player:
 
     def __init__(self,PlayerName:str = "GuestPlayer", PlayerDeckStartSize:int = 26):
-        PlayerDeckSize = self.PlayerDeckSizeNotInteger(PlayerDeckStartSize)
-        PlayerDeckSize = self.PlayerDeckSizeBad(PlayerDeckSize)
+        PlayerDeckSize = self.__PlayerDeckSizeNotInteger(PlayerDeckStartSize)
+        PlayerDeckSize = self.__PlayerDeckSizeBad(PlayerDeckSize)
 
-        self.Player = str(PlayerName)
+        self.PlayerName = str(PlayerName)
         self.DeckSize = PlayerDeckSize
         self.PlayerCards = []
 
@@ -20,17 +20,20 @@ class Player:
     def __ActionAddCard(self,Card:Card):
         self.PlayerCards.append(Card)
 
-    def PlayerDeckSizeNotInteger(self, DeckSize:int):
+    def __PlayerDeckSizeNotInteger(self, DeckSize:int):
         if(not str(DeckSize).isdigit() or type(DeckSize) != int):
             DeckSize = 26
 
         return DeckSize
 
-    def PlayerDeckSizeBad(self, DeckSize:int):
+    def __PlayerDeckSizeBad(self, DeckSize:int):
         if(DeckSize < 10 or DeckSize > 26):
             DeckSize = 26
 
         return DeckSize
+
+    def IsPlayerDeckNotEmpty(self):
+        return self.PlayerCards
 
 
     def Set_Hand(self, CardsDeck:DeckOfCards):
@@ -39,11 +42,11 @@ class Player:
         for i in range(self.DeckSize):
             card = CardsDeck.Deal_One()
             if(card is not None):
-             self.__ActionAddCard(card)
+             self.Add_Card(card)
 
 
     def Get_Card(self):
-       if(self.PlayerCards):
+       if(self.IsPlayerDeckNotEmpty()):
         card = random.choice(self.PlayerCards)
         self.PlayerCards.remove(card)
         return card
