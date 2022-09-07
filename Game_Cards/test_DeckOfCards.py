@@ -53,11 +53,8 @@ class TestDeckOfCards(TestCase):
         self.assertNotIn(card4, self.Deck1.DeckCards)
         self.assertEqual(len(self.Deck1.DeckCards), 48)
 
-    def test_DeckOfCards_Deal_One_validLimit(self):
-        for i in range(52):
-            self.Deck1.Deal_One()
-
-        self.assertFalse(self.Deck1.DeckCards)
+    @mock.patch('DeckOfCards.DeckOfCards.IsDeckNotEmpty', return_value = False)
+    def test_DeckOfCards_Deal_One_validLimit(self, DeckEmpty):
         self.assertIsNone(self.Deck1.Deal_One())
 
 
