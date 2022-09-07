@@ -11,6 +11,7 @@ class CardGame:
         self.DeckOfCards = DeckOfCards()
         self.__New_Game()
 
+
     def __New_Game(self):
         "function shuffles the deck of cards and fills the decks of the 2 players"
         self.DeckOfCards.CardShuffle()
@@ -31,5 +32,7 @@ class CardGame:
         if(self.GameStatus() == 2):
             return self.Player2
         return None
+
+
 
 

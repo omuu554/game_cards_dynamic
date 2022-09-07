@@ -8,10 +8,12 @@ class Player:
         "creates the name,deck,and decksize at instantiation"
         PlayerDeckSize = self.__PlayerDeckSizeNotInteger(PlayerDeckStartSize)#reset decksize to 26 if given decksize is not an integer
         PlayerDeckSize = self.__PlayerDeckSizeBad(PlayerDeckSize)#reset decksize to 26 if decksize is smaller than 10 or bigger than 26
+        PlayerName = self.__PlayerNameIsEmpty(PlayerName)
 
         self.PlayerName = str(PlayerName)
         self.DeckSize = int(PlayerDeckSize)
         self.PlayerCards = []
+
 
     def __RaiseErrorIfNotDeckOfCards(self, Deck:DeckOfCards):
         "function raises exeption if deck size if Deck is not of type DeckOfCards"
@@ -38,6 +40,13 @@ class Player:
             DeckSize = 26
 
         return DeckSize
+
+    def __PlayerNameIsEmpty(self, NameOfPlayer):
+        if(str(NameOfPlayer) == ""):
+            NameOfPlayer = "GuestPlayer"
+
+        return NameOfPlayer
+
 
     def __str__(self):
         return f"Player: {self.PlayerName}\nCardsAmount: {len(self.PlayerCards)} "
