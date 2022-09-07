@@ -58,10 +58,5 @@ class TestDeckOfCards(TestCase):
         self.assertIsNone(self.Deck1.Deal_One())
 
 
-
-
-
-
-
     def tearDown(self):
         pass
