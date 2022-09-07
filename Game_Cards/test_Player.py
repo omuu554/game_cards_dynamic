@@ -134,17 +134,5 @@ class TestPlayer(TestCase):
       with self.assertRaises(TypeError):
           self.player.Add_Card(["a","b","c"])
 
-
-
-
-
-
-
-
-
-
-
-
-
     def tearDown(self):
         pass
