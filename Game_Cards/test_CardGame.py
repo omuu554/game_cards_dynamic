@@ -25,22 +25,22 @@ class TestCardGame(TestCase):
     def test_CardGame_init_validLimit(self):
         self.assertEqual(len(self.cardgame.Player1.PlayerCards), 26)
         self.assertEqual(len(self.cardgame.Player2.PlayerCards), 26)
-        self.assertEqual(self.cardgame.Player1.PlayerName, 'GuestPlayer')
-        self.assertEqual(self.cardgame.Player2.PlayerName, 'GuestPlayer')
+        self.assertEqual(self.cardgame.Player1.PlayerName, 'GuestPlayer(1)')
+        self.assertEqual(self.cardgame.Player2.PlayerName, 'GuestPlayer(2)')
         self.assertEqual(len(self.cardgame.DeckOfCards.DeckCards), 0)
 
         cardgame2 = CardGame(PlayerDeckSize1= 10, PlayerDeckSize2=10)
         self.assertEqual(len(cardgame2.Player1.PlayerCards), 10)
         self.assertEqual(len(cardgame2.Player2.PlayerCards), 10)
-        self.assertEqual(cardgame2.Player1.PlayerName, 'GuestPlayer')
-        self.assertEqual(cardgame2.Player2.PlayerName, 'GuestPlayer')
+        self.assertEqual(cardgame2.Player1.PlayerName, 'GuestPlayer(1)')
+        self.assertEqual(cardgame2.Player2.PlayerName, 'GuestPlayer(2)')
         self.assertEqual(len(cardgame2.DeckOfCards.DeckCards), 32)
 
         cardgame3 = CardGame(PlayerDeckSize1=26, PlayerDeckSize2=26)
         self.assertEqual(len(cardgame3.Player1.PlayerCards), 26)
         self.assertEqual(len(cardgame3.Player2.PlayerCards), 26)
-        self.assertEqual(cardgame3.Player1.PlayerName, 'GuestPlayer')
-        self.assertEqual(cardgame3.Player2.PlayerName, 'GuestPlayer')
+        self.assertEqual(cardgame3.Player1.PlayerName, 'GuestPlayer(1)')
+        self.assertEqual(cardgame3.Player2.PlayerName, 'GuestPlayer(2)')
         self.assertEqual(len(cardgame3.DeckOfCards.DeckCards), 0)
 
 
@@ -55,23 +55,23 @@ class TestCardGame(TestCase):
         cardgame2 = CardGame(PlayerDeckSize1="abcd", PlayerDeckSize2="12")
         self.assertEqual(len(cardgame2.Player1.PlayerCards), 26)
         self.assertEqual(len(cardgame2.Player2.PlayerCards), 12)
-        self.assertEqual(cardgame2.Player1.PlayerName, 'GuestPlayer')
-        self.assertEqual(cardgame2.Player2.PlayerName, 'GuestPlayer')
+        self.assertEqual(cardgame2.Player1.PlayerName, 'GuestPlayer(1)')
+        self.assertEqual(cardgame2.Player2.PlayerName, 'GuestPlayer(2)')
         self.assertEqual(len(cardgame2.DeckOfCards.DeckCards), 14)
 
     def test_CardGame_init_invalidLimit(self):
         cardgame = CardGame(PlayerDeckSize1=27, PlayerDeckSize2=27)
         self.assertEqual(len(cardgame.Player1.PlayerCards), 26)
         self.assertEqual(len(cardgame.Player2.PlayerCards), 26)
-        self.assertEqual(cardgame.Player1.PlayerName, 'GuestPlayer')
-        self.assertEqual(cardgame.Player2.PlayerName, 'GuestPlayer')
+        self.assertEqual(cardgame.Player1.PlayerName, 'GuestPlayer(1)')
+        self.assertEqual(cardgame.Player2.PlayerName, 'GuestPlayer(2)')
         self.assertEqual(len(cardgame.DeckOfCards.DeckCards), 0)
 
         cardgame = CardGame(PlayerDeckSize1= 9, PlayerDeckSize2= 9)
         self.assertEqual(len(cardgame.Player1.PlayerCards), 26)
         self.assertEqual(len(cardgame.Player2.PlayerCards), 26)
-        self.assertEqual(cardgame.Player1.PlayerName, 'GuestPlayer')
-        self.assertEqual(cardgame.Player2.PlayerName, 'GuestPlayer')
+        self.assertEqual(cardgame.Player1.PlayerName, 'GuestPlayer(1)')
+        self.assertEqual(cardgame.Player2.PlayerName, 'GuestPlayer(2)')
         self.assertEqual(len(cardgame.DeckOfCards.DeckCards), 0)
 
 

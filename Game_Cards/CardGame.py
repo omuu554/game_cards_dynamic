@@ -6,10 +6,19 @@ class CardGame:
 
     def __init__(self,PlayerName1:str = "GuestPlayer", PlayerName2:str = "GuestPlayer", PlayerDeckSize1:int = 26, PlayerDeckSize2:int = 26):
         "card game instantiates 2 players and a deck of cards at instantiation"
+        PlayerName1,PlayerName2 = self.__IsNamesTheSame(PlayerName1,PlayerName2)
         self.Player1 = Player(PlayerName1, PlayerDeckSize1)
         self.Player2 = Player(PlayerName2, PlayerDeckSize2)
         self.DeckOfCards = DeckOfCards()
         self.__New_Game()
+
+    def __IsNamesTheSame(self,NamePlayer1:str, NamePlayer2:str):
+        "checks if the players name is the same and changes it if it does"
+        if(str(NamePlayer1) == str(NamePlayer2)):
+            NamePlayer1 = NamePlayer1 + "(1)"
+            NamePlayer2 = NamePlayer2 + "(2)"
+
+        return NamePlayer1,NamePlayer2
 
 
     def __New_Game(self):
