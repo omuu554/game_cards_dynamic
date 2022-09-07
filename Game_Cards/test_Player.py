@@ -59,6 +59,10 @@ class TestPlayer(TestCase):
         self.assertEqual(player2.PlayerName, 'GuestPlayer')
         self.assertEqual(player2.DeckSize, 26)
 
+        player2 = Player(PlayerDeckStartSize="14")
+        self.assertEqual(player2.PlayerName, 'GuestPlayer')
+        self.assertEqual(player2.DeckSize, 14)
+
     def test_Player_init_invalidDeckSizeLimit(self):
         player1 = Player(PlayerDeckStartSize=27)
         self.assertEqual(player1.PlayerName, 'GuestPlayer')

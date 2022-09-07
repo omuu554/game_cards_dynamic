@@ -10,7 +10,7 @@ class Player:
         PlayerDeckSize = self.__PlayerDeckSizeBad(PlayerDeckSize)#reset decksize to 26 if decksize is smaller than 10 or bigger than 26
 
         self.PlayerName = str(PlayerName)
-        self.DeckSize = PlayerDeckSize
+        self.DeckSize = int(PlayerDeckSize)
         self.PlayerCards = []
 
     def __RaiseErrorIfNotDeckOfCards(self, Deck:DeckOfCards):
@@ -27,14 +27,14 @@ class Player:
 
     def __PlayerDeckSizeNotInteger(self, DeckSize:int):
         "function returns fixed decksize if the given one is not an integer"
-        if(not str(DeckSize).isdigit() or type(DeckSize) != int):
+        if(not str(DeckSize).isdigit()):
             DeckSize = 26
 
         return DeckSize
 
     def __PlayerDeckSizeBad(self, DeckSize:int):
         "function returns fixed decksize if the given one is smaller than 10 or bigger than 26"
-        if(DeckSize < 10 or DeckSize > 26):
+        if(int(DeckSize) < 10 or int(DeckSize) > 26):
             DeckSize = 26
 
         return DeckSize

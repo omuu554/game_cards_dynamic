@@ -54,10 +54,10 @@ class TestCardGame(TestCase):
 
         cardgame2 = CardGame(PlayerDeckSize1="abcd", PlayerDeckSize2="12")
         self.assertEqual(len(cardgame2.Player1.PlayerCards), 26)
-        self.assertEqual(len(cardgame2.Player2.PlayerCards), 26)
+        self.assertEqual(len(cardgame2.Player2.PlayerCards), 12)
         self.assertEqual(cardgame2.Player1.PlayerName, 'GuestPlayer')
         self.assertEqual(cardgame2.Player2.PlayerName, 'GuestPlayer')
-        self.assertEqual(len(cardgame2.DeckOfCards.DeckCards), 0)
+        self.assertEqual(len(cardgame2.DeckOfCards.DeckCards), 14)
 
     def test_CardGame_init_invalidLimit(self):
         cardgame = CardGame(PlayerDeckSize1=27, PlayerDeckSize2=27)
