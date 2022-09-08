@@ -52,6 +52,7 @@ class Player:
 
 
     def __str__(self):
+        "function returns player status"
         return f"Player: {self.PlayerName}\nCardsAmount: {len(self.PlayerCards)} "
     def IsPlayerDeckNotEmpty(self):
         "function checks if the deck of the player is empty"
@@ -67,6 +68,23 @@ class Player:
             if(card is not None): #Deal_One could return None so check for it is required before adding a card
              self.Add_Card(card) # function adds a card to the deck of the player
 
+    def __Set_Hand_WhatsLeft(self , CardsDeck:DeckOfCards):
+        "function takes whats left of the deck and fills the hand of the player"
+        for i in range(len(CardsDeck.DeckCards)):
+            card = CardsDeck.Deal_One()
+            if (card is not None):
+                self.Add_Card(card)
+
+    def IsDeckSizeSmallerCurrDeck(self , CardsDeck:DeckOfCards):
+        return self.DeckSize < len(CardsDeck.DeckCards)
+    def Reset_Hand(self, CardsDeck:DeckOfCards):
+        "function fills the deck of the player with the same amount if it is not in the deck than with what that is left"
+        self.__RaiseErrorIfNotDeckOfCards(CardsDeck)
+
+        if(self.IsDeckSizeSmallerCurrDeck(CardsDeck)):
+                self.Set_Hand(CardsDeck)
+        else:
+                self.__Set_Hand_WhatsLeft(CardsDeck)
 
     def Get_Card(self):
        "funtion returns a card and removes the card for the players deck if no card is found returns None"

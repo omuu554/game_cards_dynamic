@@ -110,6 +110,43 @@ class TestPlayer(TestCase):
         with self.assertRaises(TypeError):
          self.player.Set_Hand('abc')
 
+    def test_Player_IsDeckSizeSmallerCurrDeck_valid(self):
+        self.assertTrue(self.player.IsDeckSizeSmallerCurrDeck(self.Deck))
+    def test_Player_IsDeckSizeSmallerCurrDeck_invalidSmall(self):
+        self.Deck.DeckCards = []
+        self.assertFalse(self.player.IsDeckSizeSmallerCurrDeck(self.Deck))
+    def test_Player_IsDeckSizeSmallerCurrDeck_invalidEqual(self):
+        self.Deck.DeckCards = [1,2,3,4,5,6,7,8,9,10]
+        self.assertFalse(self.player.IsDeckSizeSmallerCurrDeck(self.Deck))
+
+
+    def test_Player_Reset_Hand_valid(self):
+        self.player.Reset_Hand(self.Deck)
+        self.assertEqual(len(self.player.PlayerCards),10)
+
+        self.player.Reset_Hand(self.Deck)
+        self.assertEqual(len(self.player.PlayerCards), 20)
+
+        self.player.Reset_Hand(self.Deck)
+        self.assertEqual(len(self.player.PlayerCards), 30)
+
+    @mock.patch('Player.Player.IsDeckSizeSmallerCurrDeck',return_value = False)
+    def test_Player_Reset_Hand_validEqualOrSmall(self,DeckSizeSmaller):
+        self.player.Reset_Hand(self.Deck)
+        self.assertEqual(len(self.player.PlayerCards),52)
+
+    def test_Player_Reset_Hand_invalid(self):
+      with self.assertRaises(TypeError):
+        self.player.Reset_Hand(12)
+
+      with self.assertRaises(TypeError):
+        self.player.Reset_Hand([12,2,3,4])
+
+      with self.assertRaises(TypeError):
+        self.player.Reset_Hand("avc")
+
+
+
     def test_Player_GetCard_valid(self):
         self.player.Set_Hand(self.Deck)
         card = self.player.Get_Card()

@@ -4,12 +4,12 @@ from DeckOfCards import DeckOfCards
 class CardGame:
     "creates an object of CardGame"
 
-    def __init__(self,PlayerName1:str = "GuestPlayer", PlayerName2:str = "GuestPlayer", PlayerDeckSize1:int = 26, PlayerDeckSize2:int = 26):
+    def __init__(self,PlayerName1:str = "GuestPlayer", PlayerName2:str = "GuestPlayer", PlayerDeckSize:int = 26):
         "card game instantiates 2 players and a deck of cards at instantiation"
         PlayerName1,PlayerName2 = self.__IsNamesTheSame(PlayerName1,PlayerName2)
 
-        self.Player1 = Player(PlayerName1, PlayerDeckSize1)
-        self.Player2 = Player(PlayerName2, PlayerDeckSize2)
+        self.Player1 = Player(PlayerName1, PlayerDeckSize)
+        self.Player2 = Player(PlayerName2, PlayerDeckSize)
         self.DeckOfCards = DeckOfCards()
 
         self.Player1.PlayerName,self.Player2.PlayerName = self.__IsNamesTheSame( self.Player1.PlayerName, self.Player2.PlayerName)

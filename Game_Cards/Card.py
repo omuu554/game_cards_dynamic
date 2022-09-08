@@ -1,11 +1,10 @@
 
-
 class Card:
     "A card object"
 
     def __init__(self,value:int, suit:int):
         "creates a card with a symbol and a suit it also holds what kind of value a card is at instantiation"
-        self.__RaiseErrorNotDigit(value, suit) #raises exeption if value or suit are not int digits
+        self.__RaiseErrorNotValueEnum(value, suit) #raises exeption if value or suit are not int digits
         self.__RaiseErrorBadValue(value)# raises execption if value is invalid
         self.__RaiseErrorBadSuit(suit) # raises execption if suit is invalid
 
@@ -14,11 +13,11 @@ class Card:
         self.__StringValues = {'1': 'Ace', '2':'2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9', '10': '10', '11': 'Prince', '12': 'Queen', '13': 'King'}# dictionary with to convert value to string
         self.__StringSuits = {'1': 'Diamonds','2':'Spades', '3':'Hearts', '4': 'Clubs'} # dictionary with to convert suit to string
 
-    def __RaiseErrorNotDigit(self, *Numbers):
+    def __RaiseErrorNotValueEnum(self, *Numbers):
         "function raises exeption if the values entered are not digits from the type int"
         for Num in Numbers:
             if (not str(Num).isdigit() or type(Num) != int):
-                raise TypeError("Card can only get integer numbers")
+                raise TypeError("Value Card can only get Enumarates")
 
     def __RaiseErrorBadValue(self, value):
         "function raises exeption if the value entered is smaller than 1 or is bigger than 13"
@@ -50,6 +49,7 @@ class Card:
 
     def __str__(self):
        "function returns a string value of the current card"
+       # return f"{self.__StringValues[str(self.Value)]} of {self.__StringSuits[str(self.Suit)]}"
        return f"{self.__StringValues[str(self.Value)]} of {self.__StringSuits[str(self.Suit)]}"
 
 
